@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
-import { Text, View } from 'react-native';
-import { style } from './styles';
-import { InputLogin, InputSenha } from '../../components/InputLogin';
-import { ButtonLogin } from '../../components/ButtonLogin';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
+import React, { useState } from "react";
+import { Text, View } from "react-native";
+import { style } from "./styles";
+import { InputLogin, InputSenha } from "../../components/InputLogin";
+import { ButtonLogin } from "../../components/ButtonLogin";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 
 export default function Login() {
   const navigation = useNavigation<NavigationProp<any>>();
 
-  const [login, setLogin] = useState('A');
-  const [password, setPassword] = useState('a');
+  const [name, setName] = useState("");
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function getLogin() {
@@ -17,12 +19,12 @@ export default function Login() {
       setLoading(true);
 
       if (!login || !password) {
-        return alert('Informe os campos obrigatórios');
+        return alert("Informe os campos obrigatórios");
       }
 
-      navigation.reset({ routes: [{ name: 'Users' }] });
+      navigation.reset({ routes: [{ name: "Users" }] });
 
-      console.log('Login feito com sucesso!');
+      console.log("Login feito com sucesso!");
     } catch (error) {
       console.log(error);
     } finally {
@@ -49,7 +51,7 @@ export default function Login() {
       <View style={style.secondBar}></View>
 
       <ButtonLogin
-        text={'Entrar'}
+        text={"Entrar"}
         loading={loading}
         onPress={() => getLogin()}
       />
