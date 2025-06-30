@@ -20,9 +20,15 @@ export const style = StyleSheet.create({
   textTitle: {
     fontSize: 25,
     marginTop: 20,
-    marginLeft: 20,
+    marginLeft: 80,
     fontWeight: "bold",
     color: "white",
+  },
+
+  iconAdd: {
+    marginTop: 20,
+    marginLeft: 20,
+    position: "absolute",
   },
 
   firstBar: {
