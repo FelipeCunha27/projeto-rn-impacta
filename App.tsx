@@ -1,8 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native';
-import Login from './src/pages/login';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import Routes from './src/routes/index.routes';
 
 export default function App() {
-  return <Login></Login>;
+  return (
+    <NavigationContainer>
+      <Routes />
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({});

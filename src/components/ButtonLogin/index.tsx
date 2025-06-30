@@ -14,7 +14,7 @@ type Props = TouchableHighlightProps & {
   loading?: boolean;
 };
 
-export function Button({ ...rest }: Props) {
+export function ButtonLogin({ ...rest }: Props) {
   return (
     <TouchableOpacity style={styles.boxButton} {...rest}>
       <View style={styles.button}>
