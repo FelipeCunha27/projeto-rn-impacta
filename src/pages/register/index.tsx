@@ -9,8 +9,8 @@ import {
 } from "../../components/InputSave";
 import { ButtonSave } from "../../components/ButtonSave";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { userRepo } from "../../services/user.repo";
-import { User } from "../../models/users";
 import { MaterialIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 
@@ -23,8 +23,7 @@ export default function Login() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function goUser()
-  {
+  async function goUser() {
     navigation.reset({ routes: [{ name: "Users" }] });
   }
 
@@ -46,7 +45,7 @@ export default function Login() {
 
       userRepo.save(user).then(() => {
         console.log("Login salvo com sucesso!");
-        navigation.goBack();
+        navigation.navigate("Users");
       });
 
       navigation.reset({ routes: [{ name: "Users" }] });
@@ -60,7 +59,7 @@ export default function Login() {
   }
 
   return (
-    <View style={style.container}>
+    <SafeAreaView style={style.container}>
       <View style={style.boxTop}></View>
 
       <View style={style.boxTitle}>
@@ -102,6 +101,6 @@ export default function Login() {
       />
 
       <View style={style.boxBottom}></View>
-    </View>
+    </SafeAreaView>
   );
 }

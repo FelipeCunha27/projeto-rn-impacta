@@ -5,6 +5,7 @@ import { InputLogin, InputSenha } from "../../components/InputLogin";
 import { ButtonLogin } from "../../components/ButtonLogin";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { userRepo } from "../../services/user.repo";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Login() {
   const navigation = useNavigation<NavigationProp<any>>();
@@ -21,7 +22,10 @@ export default function Login() {
         return alert("Informe os campos obrigatórios");
       }
 
-      if ((await userRepo.getUser(login, password)) || (login === "admin" && password === "123")) {
+      if (
+        (await userRepo.getUser(login, password)) ||
+        (login === "admin" && password === "123")
+      ) {
         navigation.reset({ routes: [{ name: "Users" }] });
       } else {
         return alert("Usuário ou senha invalido");
@@ -36,7 +40,7 @@ export default function Login() {
   }
 
   return (
-    <View style={style.container}>
+    <SafeAreaView style={style.container}>
       <View style={style.boxTop}></View>
 
       <View style={style.boxTitle}>
@@ -60,6 +64,6 @@ export default function Login() {
       />
 
       <View style={style.boxBottom}></View>
-    </View>
+    </SafeAreaView>
   );
 }

@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
-import { style } from './styles';
-import { Text, View } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
-import { useNavigation,useFocusEffect, NavigationProp } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native';
+import React, { useState } from "react";
+import { style } from "./styles";
+import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { MaterialIcons } from "@expo/vector-icons";
+import {
+  useNavigation,
+  useFocusEffect,
+  NavigationProp,
+} from "@react-navigation/native";
+import { TouchableOpacity } from "react-native";
 import { User } from "../../models/users";
 import { userRepo } from "../../services/user.repo";
 
@@ -16,15 +21,15 @@ export default function Users() {
   useFocusEffect(() => {
     userRepo.getUsers().then((list) => setUsers(list));
   });
- 
+
   async function goLogin() {
-     navigation.reset({ routes: [{ name: "Login" }] });
+    navigation.reset({ routes: [{ name: "Login" }] });
   }
 
   async function addUser() {
     try {
       setLoading(true);
-      navigation.reset({ routes: [{ name: 'Register' }] });
+      navigation.reset({ routes: [{ name: "Register" }] });
     } catch (error) {
       console.log(error);
     } finally {
@@ -33,7 +38,7 @@ export default function Users() {
   }
 
   return (
-    <View style={style.container}>
+    <SafeAreaView style={style.container}>
       <View style={style.boxTop}></View>
 
       <View style={style.boxTitle}>
@@ -57,13 +62,13 @@ export default function Users() {
       </View>
 
       {users.map((user) => (
-        <View style={style.listBox}>
+        <View key={user.login} style={style.listBox}>
           <Text style={style.listName}>{user.login}</Text>
           <Text style={style.listUsername}>{user.name}</Text>
         </View>
       ))}
 
       <View style={style.boxBottom}></View>
-    </View>
+    </SafeAreaView>
   );
 }

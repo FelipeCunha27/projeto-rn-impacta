@@ -18,7 +18,7 @@ export function ButtonSave({ ...rest }: Props) {
   return (
     <TouchableOpacity style={styles.boxButton} {...rest}>
       <View style={styles.button}>
-        <MaterialIcons name="login" style={styles.iconLogin} />
+        <MaterialIcons name="save" style={styles.iconLogin} />
         {rest.loading ? (
           <ActivityIndicator style={styles.indicator} color="white" />
         ) : (
