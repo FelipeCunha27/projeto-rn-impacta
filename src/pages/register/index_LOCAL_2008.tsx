@@ -11,8 +11,6 @@ import { ButtonSave } from "../../components/ButtonSave";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { userRepo } from "../../services/user.repo";
 import { User } from "../../models/users";
-import { MaterialIcons } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native";
 
 export default function Login() {
   const navigation = useNavigation<NavigationProp<any>>();
@@ -46,7 +44,7 @@ export default function Login() {
 
       navigation.reset({ routes: [{ name: "Users" }] });
 
-      console.log("Usuário criado com sucesso!");
+      console.log("Login feito com sucesso!");
     } catch (error) {
       console.log(error);
     } finally {
@@ -60,14 +58,7 @@ export default function Login() {
 
       <View style={style.boxTitle}>
         <View>
-          <Text style={style.textTitle}>Novo Usuário</Text>
-          <TouchableOpacity
-            onPress={() => saveUser()}
-            disabled={loading}
-            style={style.iconAdd}
-          >
-            <MaterialIcons name="arrow-back" color={"white"} size={30} />
-          </TouchableOpacity>
+          <Text style={style.textTitle}>Acesso</Text>
         </View>
       </View>
 

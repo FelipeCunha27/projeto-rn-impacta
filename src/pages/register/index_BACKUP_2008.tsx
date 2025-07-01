@@ -9,10 +9,13 @@ import {
 } from "../../components/InputSave";
 import { ButtonSave } from "../../components/ButtonSave";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
+<<<<<<< HEAD
 import { userRepo } from "../../services/user.repo";
 import { User } from "../../models/users";
+=======
 import { MaterialIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
+>>>>>>> 7b97e132cf95521d0434176ac63c7168fafdfd74
 
 export default function Login() {
   const navigation = useNavigation<NavigationProp<any>>();

@@ -8,10 +8,8 @@ import { useNavigation, NavigationProp } from "@react-navigation/native";
 export default function Login() {
   const navigation = useNavigation<NavigationProp<any>>();
 
-  const [name, setName] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function getLogin() {

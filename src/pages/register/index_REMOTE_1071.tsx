@@ -9,8 +9,6 @@ import {
 } from "../../components/InputSave";
 import { ButtonSave } from "../../components/ButtonSave";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
-import { userRepo } from "../../services/user.repo";
-import { User } from "../../models/users";
 import { MaterialIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 
@@ -32,17 +30,6 @@ export default function Login() {
       } else if (password != confirmPassword) {
         return alert("Senhas não coincidem");
       }
-
-      const user = {
-        name,
-        login,
-        password,
-      };
-
-      userRepo.save(user).then(() => {
-        console.log("Login salvo com sucesso!");
-        navigation.goBack();
-      });
 
       navigation.reset({ routes: [{ name: "Users" }] });
 
