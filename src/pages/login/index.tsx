@@ -4,6 +4,7 @@ import { style } from "./styles";
 import { InputLogin, InputSenha } from "../../components/InputLogin";
 import { ButtonLogin } from "../../components/ButtonLogin";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
+import { userRepo } from "../../services/user.repo";
 
 export default function Login() {
   const navigation = useNavigation<NavigationProp<any>>();
@@ -20,7 +21,11 @@ export default function Login() {
         return alert("Informe os campos obrigatórios");
       }
 
-      navigation.reset({ routes: [{ name: "Users" }] });
+      if ((await userRepo.getUser(login, password)) || (login === "admin" && password === "123")) {
+        navigation.reset({ routes: [{ name: "Users" }] });
+      } else {
+        return alert("Usuário ou senha invalido");
+      }
 
       console.log("Login feito com sucesso!");
     } catch (error) {

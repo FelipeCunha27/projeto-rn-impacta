@@ -16,7 +16,11 @@ export default function Users() {
   useFocusEffect(() => {
     userRepo.getUsers().then((list) => setUsers(list));
   });
-  
+ 
+  async function goLogin() {
+     navigation.reset({ routes: [{ name: "Login" }] });
+  }
+
   async function addUser() {
     try {
       setLoading(true);
@@ -34,7 +38,15 @@ export default function Users() {
 
       <View style={style.boxTitle}>
         <Text style={style.textTitle}>Usuários</Text>
-        <MaterialIcons name="logout" style={style.iconLogout} />
+
+        <TouchableOpacity
+          onPress={() => goLogin()}
+          disabled={loading}
+          style={style.iconLogout}
+        >
+          <MaterialIcons name="logout" color={"white"} size={30} />
+        </TouchableOpacity>
+
         <TouchableOpacity
           onPress={() => addUser()}
           disabled={loading}

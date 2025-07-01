@@ -23,6 +23,11 @@ export default function Login() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  async function goUser()
+  {
+    navigation.reset({ routes: [{ name: "Users" }] });
+  }
+
   async function saveUser() {
     try {
       setLoading(true);
@@ -62,7 +67,7 @@ export default function Login() {
         <View>
           <Text style={style.textTitle}>Novo Usuário</Text>
           <TouchableOpacity
-            onPress={() => saveUser()}
+            onPress={() => goUser()}
             disabled={loading}
             style={style.iconAdd}
           >

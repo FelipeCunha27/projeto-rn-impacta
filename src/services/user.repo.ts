@@ -1,6 +1,5 @@
+import { User } from './../models/users';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-import { User } from "../models/users";
 
 class UserRepository {
   private static readonly KEY = "APP_USER@user_document";
@@ -19,6 +18,18 @@ class UserRepository {
     return [];
   }
 
+  public async getUser(user: string, password: string) {
+    const list = await this.getUsers();
+
+      const finded = list.find(item => item.login === user && item.password === password);
+
+      if (finded) {
+        return true
+      } else {
+        return false
+      }
+  }
+
   public async save(user: User) {
     const list = await this.getUsers();
 
@@ -33,12 +44,12 @@ class UserRepository {
     this.persist(list);
   }
 
-//   public async remove(place: Place) {
-//     let list = await this.getPlaces();
-//     list = list.filter((p) => !this.equals(p, place));
+  //   public async remove(place: Place) {
+  //     let list = await this.getPlaces();
+  //     list = list.filter((p) => !this.equals(p, place));
 
-//     this.persist(list);
-//   }
+  //     this.persist(list);
+  //   }
 }
 
 export const userRepo = new UserRepository();
